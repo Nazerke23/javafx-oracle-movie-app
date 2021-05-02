@@ -1,5 +1,5 @@
 # dbms2 Project
-**cLoVer** team
+**cLoVer** team : Nazerke Kulan, Temirlan Kadyr, Dilyara Kdyrova, Dilfina Kazhieva.
 ## Technical requirements:
 All codes of database part you can find in : *databasePartCodes/* directory above.<br/><br/>
 1)at least 4 Function & Procedure : ***done*** **(8)**<br/>
