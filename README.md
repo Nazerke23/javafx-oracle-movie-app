@@ -11,7 +11,7 @@ All codes of application part you can find in : ***cLoVersMovie/*** directory ab
 ## Technical Requirements:
 All codes of database part you can find in : ***databasePartCodes/*** directory above.<br/><br/>
 - at least 4 Function & Procedure : ***done*** **(8)**<br/>
-- at least 2 Collection : ***done*** **(8)**<br/>
+- at least 2 Collection : ***done*** **(2)**<br/>
 - at least 4 Cursor : ***done*** **(6)**<br/>
 - at least 2 Package : ***done*** **(3)**<br/>
 - at least 3 Trigger : ***done*** **(3)**<br/>
