@@ -1,0 +1,36 @@
+--1 PROCEDURE
+--1 CURSOR
+--1 USAGE OF DYNAMIC SQL
+--1 TRIGGER
+
+create or replace procedure updateTrigger(p_table varchar) is
+    var1 varchar2(9000);
+    v_res varchar2(4000) := '';
+    cursor curs is
+    select COLUMN_NAME, data_type from ALL_TAB_COLUMNS where LOWER(Table_Name) = 'netflix';
+begin
+    for i in curs loop
+            v_res := v_res || ' :old.' || i.column_name || ', :new.' || i.column_name||',';
+    end loop;
+var1 := ' create or replace trigger create_netflix_trigger
+        after insert or delete or update on '|| p_table || ' for each row
+        declare 
+            v_count numeric;
+            v_id numeric;
+            v_user varchar2(20);
+        begin
+            select sys.login_user into v_user from dual;
+            select count(u.id) into v_count from ' || p_table || '_log u;
+            if v_count = 0 then
+                v_id := 0;
+            else
+                select max(u.id) into v_id from ' || p_table || '_log u;
+            end if;
+                insert into ' || p_table || '_log
+                values(v_id+1, sysdate,'|| v_res ||' ''UPDATE'', v_user);     
+        end;
+        ';   
+    EXECUTE IMMEDIATE var1;
+    dbms_output.put_line(v_res);
+end create_netflix_triggers;
+/

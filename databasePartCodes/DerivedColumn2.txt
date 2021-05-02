@@ -1,0 +1,23 @@
+--1 function, derived coll for 2nd task
+--by year we define the category : 
+
+CREATE OR REPLACE FUNCTION get_year (p_year numeric)
+   RETURN varchar2 DETERMINISTIC is
+v_res varchar2(30);
+v_min numeric;
+v_max numeric;
+BEGIN
+    select max(release_year) into v_max from netflix;
+    select min(release_year) into v_min from netflix;
+    if p_year between v_min and 1999 then
+        v_res := 'old style';
+    elsif p_year between 2000 and v_max then
+        v_res := 'new style';
+    end if;
+   RETURN v_res;
+END get_year;
+/
+
+alter table netflix add (
+  category varchar2(4000) as (get_year(release_year))
+);

@@ -1,0 +1,22 @@
+--First PACKAGE 
+create or replace PACKAGE log_table AS
+procedure updateTrigger(p_table varchar);
+procedure insertTrigger(p_table varchar);
+procedure deleteTrigger(p_table varchar);
+procedure create_log_table(p_table varchar);
+end log_table;
+
+--Second PACKAGE 
+create or replace PACKAGE derived_columns AS
+FUNCTION get_country (p_country varchar)
+return varchar2;
+FUNCTION get_year (p_year numeric)
+return varchar2;
+end derived_columns;
+
+
+--Third PACKAGE 
+create or replace PACKAGE collections AS
+procedure collection1Procedure;
+procedure collection2Procedure;
+end collections;

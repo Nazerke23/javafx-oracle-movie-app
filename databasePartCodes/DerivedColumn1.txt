@@ -1,0 +1,90 @@
+--1 FUNCTION
+
+--by country we define the continent 
+CREATE OR REPLACE FUNCTION get_country (p_country varchar)
+   RETURN varchar2 DETERMINISTIC is
+v_res varchar2(30);
+BEGIN
+    if p_country in ('Austria', 'Belgium', 'Bulgaria', 'Great Britain', 'Hungary', 'Germany', 'Greece', 
+                  'Denmark', 'Ireland', 'Spain', 'Italy', 'Cyprus', 'Latvia', 'Lithuania', 'Luxembourg',
+                  'Malta', 'Netherlands', 'Poland', 'Portugal', 'Romania', 'Slovakia', 'Slovenia', 'Finland', 
+                  'France', 'Croatia', 'Czech Republic', 'Sweden', 'Estonia')
+                  or p_country like '%Austria%' or p_country like '%Belgium%'
+                  or p_country like '%Bulgaria%' or p_country like '%Great Britain%'
+                  or p_country like '%Hungary%' or p_country like '%Germany%'
+                  or p_country like '%Greece%' or p_country like '%Denmark%'
+                  or p_country like '%Ireland%' or p_country like '%Spain%'
+                  or p_country like '%Italy%' or p_country like '%Cyprus%'
+                  or p_country like '%Latvia%' or p_country like '%Lithuania%'
+                  or p_country like '%Luxembourg%' or p_country like '%Malta%'
+                  or p_country like '%Netherlands%' or p_country like '%Poland%'
+                  or p_country like '%Portugal%' or p_country like '%Romania%'
+                  or p_country like '%Slovakia%' or p_country like '%Slovenia%'
+                  or p_country like '%Finland%' or p_country like '%France%'
+                  or p_country like '%Croatia%' or p_country like '%Czech Republic%'
+                  or p_country like '%Sweden%' or p_country like '%Estonia%' then
+        v_res := 'Europe';--europe
+    elsif p_country in ('Algeria', 'Angola', 'Benin', 'Botswana', 'Burkina Faso', 'Burundi', 'Cameroon', 
+                  'Cabo Verde', 'Central African Republic', 'Chad', 'Comoros', 
+                  'Congo', 'the Democratic Republic of Congo', 
+                  'Cote dIvoire', 'Djibouti', 'Equatorial Guinea', 
+                  'Egypt', 'Eritrea', 'Ethiopia', 'Gabon', 'Gambia',
+                  'Ghana', 'Guinea', 'Guinea-Bissau', 'South Africa', 'Nigeria', 'Zimbabwe') 
+                  or p_country like '%Egypt%' then
+        v_res := 'Africa';--africa
+    elsif p_country in ('Australia', 'Micronesia', 'Fiji', 'Kiribati', 'Marshall Islands', 'Nauru', 'New Zealand', 'Palau',
+                  'Papua New Guinea', 'Samoa', 'Solomon Islands', 'Tonga', 'Tuvalu', 'Vanuatu') 
+                  or p_country like '%Australia%' or p_country like '%Micronesia%'
+                  or p_country like '%Fiji%' or p_country like '%Kiribati%'
+                  or p_country like '%Marshall Islands%' or p_country like '%Nauru%'
+                  or p_country like '%New Zealand%' or p_country like '%Palau%'
+                  or p_country like '%Papua New Guinea%' or p_country like '%Samoa%'
+                  or p_country like '%Solomon Islands%' or p_country like '%Tonga%'
+                  or p_country like '%Tuvalu%' or p_country like '%Vanuatu%' then
+        v_res := 'Australia';--australia
+        
+    elsif p_country in ('Argentina', 'Bolivia', 'Brazil', 'Chile', 'Colombia', 'Ecuador', 'Falkland Islands',
+                  'French Guiana', 'Guyana', 'Paraguay', 'Peru', 'Suriname', 'Uruguay', 'Venezuela') 
+                  or p_country like '%Argentina%' or p_country like '%Bolivia%'
+                  or p_country like '%Brazil%' or p_country like '%Chile%'
+                  or p_country like '%Guyana%' or p_country like '%Colombia%'
+                  or p_country like '%Ecuador%' or p_country like '%Paraguay%'
+                  or p_country like '%Peru%' or p_country like '%Suriname%'
+                  or p_country like '%Uruguay%' or p_country like '%Venezuela%' then
+        v_res := 'South America';--south america
+    elsif p_country in ('Barbados', 'Belize', 'Canada', 'Costa Rica', 'Cuba', 'Dominica', 
+                  'Dominican Republic', 'El Salvador',
+                  'Grenada', 'Guatemala', 'Haiti', 'Honduras', 'Jamaica', 'Mexico', 'Nicaragua', 
+                  'Saint Kitts and Nevis', 
+                  'Panama', 'Saint Lucia', 'Saint Vincent and the Grenadines', 'Trinidad and Tobago',
+                  'United States') or p_country like '%Barbados%' or p_country like '%Belize%'
+                  or p_country like '%Canada%' or p_country like '%Costa Rica%'
+                  or p_country like '%Cuba%' or p_country like '%Dominica%'
+                  or p_country like '%Dominican Republic%' or p_country like '%El Salvador%'
+                  or p_country like '%Grenada%' or p_country like '%Guatemala%'
+                  or p_country like '%Haiti%' or p_country like '%Honduras%'
+                  or p_country like '%Jamaica%' or p_country like '%Mexico%'
+                  or p_country like '%Nicaragua%' or p_country like '%Saint Kitts and Nevis%'
+                  or p_country like '%Panama%' or p_country like '%United States%' then
+        v_res := 'North America';--north america
+    elsif p_country in ('Australia', 'Chile', 'France', 'New Zealand',
+                  'Norway', 'United Kingdom') 
+                  or p_country like '%Australia%'
+                  or p_country like '%Chile%' or p_country like '%France%'
+                  or p_country like '%New Zealand%' or p_country like '%Norway%'
+                  or p_country like '%United Kingdom%' then
+        v_res := 'Antarctica';--antarctica
+    elsif p_country in ('Russia', 'China', 'India', 'Saudi Arabia', 'Indonesia', 'Pakistan',
+                 'Turkey',	'Thailand','Japan' , 'Malaysia','Philippines'	,	 		
+                 'Bangladesh', 'South Korea',	'United Arab Emirates'	,'Georgia'	,
+                 'Taiwan', 'Singapore', 'Hong Kong') or p_country like '%Japan%' or p_country like '%Indonesia%'
+                 or p_country like '%India%' or p_country like '%China%' or p_country like '%Malaysia%' then
+        v_res := 'Asia';--asia
+    end if;
+   RETURN v_res;
+END get_country;
+/
+alter table netflix add (
+  continent varchar2(4000) as (get_country(country))
+);
+/

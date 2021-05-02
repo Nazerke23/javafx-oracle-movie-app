@@ -1,0 +1,57 @@
+--1 COLLECTION
+--1 PROCEDURE
+--1 USAGE OF DYNAMIC SQL
+--1 CURSOR
+create table netflixCollection2(
+		show_id VARCHAR(100),
+		type VARCHAR(100),
+		title VARCHAR(100),
+		director VARCHAR(100),
+		cast VARCHAR(500),
+		country VARCHAR(100),
+		date_added VARCHAR(100),
+		release_year numeric,
+		rating VARCHAR(100),
+		durating VARCHAR(100),
+		listed_in varchar(100),
+		description varchar(600)
+	);
+
+create or replace procedure collection2Procedure as
+    v_res varchar2(4000);
+begin
+    v_res := 'DECLARE
+    CURSOR curs IS
+        select * from netflix 
+        where listed_in like ''%Drama%''
+        and release_year between 2019 and 2021;
+      
+    v_cnt numeric := 1;
+    TYPE t_netflix IS TABLE OF curs%rowtype
+    INDEX BY BINARY_INTEGER;
+    v_netflix_tab t_netflix;
+BEGIN
+    FOR v_rec IN curs LOOP
+        v_netflix_tab(v_cnt) := v_rec;
+        v_cnt := v_cnt + 1;
+    END LOOP;
+
+    FOR i IN v_netflix_tab.FIRST..v_netflix_tab.LAST LOOP
+        IF v_netflix_tab.EXISTS(i) THEN
+            
+            insert into netflixCollection2
+            values(v_netflix_tab(i).show_id, v_netflix_tab(i).type, v_netflix_tab(i).title,
+            v_netflix_tab(i).director,v_netflix_tab(i).cast,v_netflix_tab(i).country,
+            v_netflix_tab(i).date_added,v_netflix_tab(i).release_year,v_netflix_tab(i).rating,
+            v_netflix_tab(i).duration,v_netflix_tab(i).listed_in, v_netflix_tab(i).description);
+        END IF;
+    END LOOP;
+END;';
+    EXECUTE IMMEDIATE v_res;
+end;
+/
+
+
+delete from netflixCollection2;
+call collection2Procedure();
+select * from netflixCollection2;
