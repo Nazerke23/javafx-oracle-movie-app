@@ -1,0 +1,204 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.String?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.MenuButton?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="810.0" prefWidth="1500.0" styleClass="gradient-background" stylesheets="@../values/style.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.NewSortController">
+   <children>
+      <BorderPane prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <left>
+            <VBox prefHeight="200.0" prefWidth="85.0" styleClass="container" BorderPane.alignment="CENTER">
+               <BorderPane.margin>
+                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+               </BorderPane.margin>
+               <children>
+                  <Button mnemonicParsing="false" onAction="#handleButtonSortNazad" prefHeight="820.0" prefWidth="85.0">
+                     <graphic>
+                        <ImageView fitHeight="40.0" fitWidth="60.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../img/icon9.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                     <styleClass>
+                        <String fx:value="gradient-background-button" />
+                        <String fx:value="container" />
+                        <String fx:value="shadow" />
+                     </styleClass>
+                  </Button>
+               </children>
+            </VBox>
+         </left>
+         <center>
+            <VBox prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
+               <children>
+                  <HBox alignment="CENTER" prefHeight="67.0" prefWidth="1320.0" style="-fx-border-radius: 40;" styleClass="container" stylesheets="@../values/style.css">
+                     <VBox.margin>
+                        <Insets bottom="10.0" left="10.0" right="50.0" top="10.0" />
+                     </VBox.margin>
+                     <children>
+                        <Label styleClass="shadow" text="SORTING FUNCTIONS" textFill="WHITE">
+                           <font>
+                              <Font name="Arial Narrow Bold" size="38.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </HBox>
+                  <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" style="-fx-border-radius: 40;" styleClass="container" stylesheets="@../values/style.css">
+                     <VBox.margin>
+                        <Insets bottom="10.0" left="10.0" right="50.0" top="10.0" />
+                     </VBox.margin>
+                     <children>
+                        <VBox alignment="CENTER" prefHeight="100.0" prefWidth="287.0">
+                           <children>
+                              <MenuButton fx:id="drop" alignment="CENTER" mnemonicParsing="false" prefHeight="42.0" prefWidth="140.0" text="Country" textFill="WHITE">
+                                 <items>
+                                    <MenuItem fx:id="india2" mnemonicParsing="false" onAction="#show_def_country" text="-" />
+                                    <MenuItem fx:id="india" mnemonicParsing="false" onAction="#show_india" text="India" />
+                                    <MenuItem fx:id="united_state" mnemonicParsing="false" onAction="#show_states" text="United States" />
+                                    <MenuItem fx:id="brazil" mnemonicParsing="false" onAction="#show_brazil" text="Brazil" />
+                                    <MenuItem fx:id="spain" mnemonicParsing="false" onAction="#show_spain" text="Spain" />
+                                    <MenuItem fx:id="japan" mnemonicParsing="false" onAction="#show_japan" text="Japan" />
+                                    <MenuItem fx:id="france" mnemonicParsing="false" onAction="#show_france" text="France" />
+                                    <MenuItem fx:id="china" mnemonicParsing="false" onAction="#show_china" text="China" />
+                                    <MenuItem mnemonicParsing="false" onAction="#show_united_kingdom" text="United Kingdom" />
+                                    <MenuItem mnemonicParsing="false" onAction="#show_korea" text="South Korea" />
+                                 </items>
+                                 <styleClass>
+                                    <String fx:value="gradient-background-button" />
+                                    <String fx:value="shadow" />
+                                 </styleClass>
+                                 <font>
+                                    <Font name="Arial Rounded MT Bold" size="20.0" />
+                                 </font>
+                              </MenuButton>
+                           </children>
+                        </VBox>
+                        <VBox alignment="CENTER" prefHeight="100.0" prefWidth="258.0">
+                           <children>
+                              <MenuButton fx:id="dropdown_type" alignment="CENTER" mnemonicParsing="false" prefHeight="42.0" prefWidth="128.0" text="Type" textFill="WHITE">
+                                 <items>
+                                    <MenuItem fx:id="india11" mnemonicParsing="false" onAction="#show_def_type" text="-" />
+                                    <MenuItem fx:id="india1" mnemonicParsing="false" onAction="#show_movies" text="Movie" />
+                                    <MenuItem fx:id="united_state1" mnemonicParsing="false" onAction="#show_shows" text="TV Show" />
+                                 </items>
+                                 <styleClass>
+                                    <String fx:value="shadow" />
+                                    <String fx:value="gradient-background-button" />
+                                 </styleClass>
+                                 <font>
+                                    <Font name="Arial Rounded MT Bold" size="20.0" />
+                                 </font>
+                              </MenuButton>
+                           </children>
+                        </VBox>
+                        <VBox prefHeight="100.0" prefWidth="307.0">
+                           <children>
+                              <Label alignment="CENTER" prefHeight="22.0" prefWidth="71.0" styleClass="shadow" text="FROM" textFill="WHITE">
+                                 <font>
+                                    <Font name="Arial Rounded MT Bold" size="18.0" />
+                                 </font></Label>
+                              <TextField fx:id="date_from" alignment="BOTTOM_CENTER" prefHeight="37.0" prefWidth="194.0">
+                                 <VBox.margin>
+                                    <Insets top="10.0" />
+                                 </VBox.margin>
+                                 <styleClass>
+                                    <String fx:value="transparent" />
+                                    <String fx:value="input" />
+                                 </styleClass>
+                                 <font>
+                                    <Font name="Arial Narrow" size="19.0" />
+                                 </font></TextField>
+                           </children>
+                           <HBox.margin>
+                              <Insets />
+                           </HBox.margin>
+                           <padding>
+                              <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+                           </padding>
+                        </VBox>
+                        <VBox prefHeight="100.0" prefWidth="277.0">
+                           <children>
+                              <Label styleClass="shadow" text="TO" textFill="WHITE">
+                                 <font>
+                                    <Font name="Arial Rounded MT Bold" size="18.0" />
+                                 </font></Label>
+                              <TextField fx:id="date_to">
+                                 <VBox.margin>
+                                    <Insets top="10.0" />
+                                 </VBox.margin>
+                                 <styleClass>
+                                    <String fx:value="transparent" />
+                                    <String fx:value="input" />
+                                 </styleClass>
+                                 <font>
+                                    <Font name="Arial Narrow" size="19.0" />
+                                 </font></TextField>
+                           </children>
+                           <padding>
+                              <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+                           </padding>
+                        </VBox>
+                        <VBox alignment="CENTER" prefHeight="100.0" prefWidth="163.0">
+                           <children>
+                              <Button fx:id="find_btn" mnemonicParsing="false" onAction="#sor_by_year" prefHeight="49.0" prefWidth="102.0" text="FIND" textFill="WHITE">
+                                 <styleClass>
+                                    <String fx:value="gradient-background-button" />
+                                    <String fx:value="shadow" />
+                                 </styleClass>
+                                 <font>
+                                    <Font size="17.0" />
+                                 </font></Button>
+                           </children>
+                           <HBox.margin>
+                              <Insets />
+                           </HBox.margin>
+                        </VBox>
+                     </children>
+                  </HBox>
+                  <HBox prefHeight="577.0" prefWidth="1335.0" style="-fx-border-radius: 40;" styleClass="container" stylesheets="@../values/style.css">
+                     <VBox.margin>
+                        <Insets bottom="10.0" left="10.0" right="50.0" top="10.0" />
+                     </VBox.margin>
+                     <children>
+                        <TableView fx:id="tableNetflix" prefHeight="495.0" prefWidth="1269.0">
+                           <columns>
+                              <TableColumn fx:id="colId" prefWidth="43.0" text="id" />
+                              <TableColumn fx:id="colType" prefWidth="107.0" text="type" />
+                              <TableColumn fx:id="colTitle" prefWidth="75.0" text="title" />
+                              <TableColumn fx:id="colDirector" prefWidth="136.0" text="director" />
+                              <TableColumn fx:id="colCast" prefWidth="144.0" text="cast" />
+                              <TableColumn fx:id="colCountry" prefWidth="92.0" text="country" />
+                              <TableColumn fx:id="colDate" minWidth="0.0" prefWidth="52.0" text="date" />
+                              <TableColumn fx:id="colYear" prefWidth="107.0" text="year" />
+                              <TableColumn fx:id="colRating" prefWidth="62.0" text="rating" />
+                              <TableColumn fx:id="colDuration" prefWidth="99.0" text="duration" />
+                              <TableColumn fx:id="colGender" prefWidth="155.0" text="gender" />
+                              <TableColumn fx:id="colDescription" prefWidth="193.0" text="description" />
+                           </columns>
+                           <HBox.margin>
+                              <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                           </HBox.margin>
+                        </TableView>
+                     </children>
+                  </HBox>
+               </children>
+            </VBox>
+         </center>
+      </BorderPane>
+   </children>
+</AnchorPane>

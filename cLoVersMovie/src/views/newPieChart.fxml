@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.String?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.chart.PieChart?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1500.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.NewPieChartController">
+   <children>
+      <BorderPane prefHeight="200.0" prefWidth="200.0" styleClass="gradient-background" stylesheets="@../values/style.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <left>
+            <VBox prefHeight="790.0" prefWidth="85.0" stylesheets="@../values/style.css" BorderPane.alignment="CENTER">
+               <BorderPane.margin>
+                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+               </BorderPane.margin>
+               <children>
+                  <Button fx:id="btnPieChartNazad" mnemonicParsing="false" onAction="#handleButtonPieChartNazad" prefHeight="790.0" prefWidth="68.0">
+                     <graphic>
+                        <ImageView fitHeight="34.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../img/icon9.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                     <styleClass>
+                        <String fx:value="container" />
+                        <String fx:value="shadow" />
+                     </styleClass>
+                  </Button>
+               </children>
+            </VBox>
+         </left>
+         <center>
+            <VBox prefHeight="688.0" prefWidth="1355.0" style="-fx-border-radius: 50;" BorderPane.alignment="CENTER">
+               <BorderPane.margin>
+                  <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+               </BorderPane.margin>
+               <children>
+                  <VBox alignment="CENTER" prefHeight="100.0" prefWidth="100.0" style="-fx-background-radius: 40;" styleClass="container">
+                     <children>
+                        <Label styleClass="shadow" text="PIE CHART" textFill="WHITE">
+                           <font>
+                              <Font name="Arial Narrow Bold" size="40.0" />
+                           </font>
+                        </Label>
+                     </children>
+                     <VBox.margin>
+                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                     </VBox.margin>
+                  </VBox>
+                  <VBox alignment="CENTER" prefHeight="633.0" prefWidth="1335.0" style="-fx-background-radius: 40;" styleClass="container">
+                     <VBox.margin>
+                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                     </VBox.margin>
+                     <children>
+                        <PieChart fx:id="pie_id" legendVisible="false" prefHeight="415.0" prefWidth="1315.0" stylesheets="@../values/style.css" titleSide="BOTTOM" VBox.vgrow="ALWAYS">
+                           <styleClass>
+                              <String fx:value="default-color0-pie" />
+                              <String fx:value="default-color1-pie" />
+                              <String fx:value="default-color2-pie" />
+                              <String fx:value="shadow" />
+                           </styleClass>
+                           <padding>
+                              <Insets top="20.0" />
+                           </padding>
+                           <VBox.margin>
+                              <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                           </VBox.margin>
+                        </PieChart>
+                     </children>
+                  </VBox>
+               </children>
+            </VBox>
+         </center>
+      </BorderPane>
+   </children>
+</AnchorPane>

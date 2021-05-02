@@ -1,0 +1,4 @@
+.gradient{
+	-fx-background-color:rgba(0,0,0,0);
+  /* -fx-background-color: linear-gradient(to top right, #ff7f50, #6a5acd);*/
+}
