@@ -1,0 +1,24 @@
+--Adding a new column for storing images 
+alter table Netflixx
+add image blob;
+
+
+
+--Inserting images separately to each row
+DECLARE
+  l_dir    VARCHAR2(10) := 'BLOB'; -------Is the Directory Object Created Above.
+  l_file   VARCHAR2(20) := 'roma.png'; ------ Is the BLOB File that is present in the Directory mentioned.
+  l_bfile  BFILE;
+  l_blob   BLOB;
+  v_num number;
+begin
+update Netflixx
+set image=empty_blob()
+where show_id='s5262'
+ RETURN image INTO l_blob;
+  l_bfile := BFILENAME(l_dir, l_file);
+  DBMS_LOB.fileopen(l_bfile, DBMS_LOB.file_readonly);
+  DBMS_LOB.loadfromfile(l_blob, l_bfile, DBMS_LOB.getlength(l_bfile));
+  DBMS_LOB.fileclose(l_bfile);
+  COMMIT;
+END;
